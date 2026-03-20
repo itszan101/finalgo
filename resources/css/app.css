@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* enable dark mode using .dark class */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===============================
+   THEME TOKENS
+================================ */
+
+@theme {
+
+  --color-primary: #2b8dee;
+
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101922;
+
+  --radius: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --font-display: "Manrope", sans-serif;
+  --font-sans: 'Instrument Sans',
+    ui-sans-serif,
+    system-ui,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+
+}
+
+/* ===============================
+   BASE STYLE
+================================ */
+
+@layer base {
+
+  html {
+    font-family: var(--font-display);
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--color-background-light);
+  }
+
+  .dark body {
+    background-color: var(--color-background-dark);
+  }
+
+  .theme-transition {
+    @apply transition-colors duration-200;
+  }
+
+}
+
+/* ===============================
+   COMPONENT UTILITIES
+================================ */
+
+@layer components {
+
+  /* Card */
+  .card {
+
+    @apply rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6;
+
+  }
+
+  /* Table container */
+  .table-container {
+
+    @apply overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50;
+
+  }
+
+  /* Badge */
+  .badge {
+
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+
+  }
+
+  /* Category Colors */
+
+  .badge-saving {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+
+  .badge-needs {
+    @apply bg-emerald-500/10 text-emerald-500 border border-emerald-500/20;
+  }
+
+  .badge-giving {
+    @apply bg-purple-500/10 text-purple-500 border border-purple-500/20;
+  }
+
+  .badge-playing {
+    @apply bg-orange-500/10 text-orange-500 border border-orange-500/20;
+  }
+
+}
+
+/* ===============================
+   UTILITIES
+================================ */
+
+@layer utilities {
+
+  /* Smooth hover animation */
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.04);
+  }
+
+}
